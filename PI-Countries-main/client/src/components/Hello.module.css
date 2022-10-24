@@ -1,0 +1,41 @@
+.mainContainer {
+  background-color: #282c34;
+  opacity: 70%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content:flex-start;
+  width: 100vw;
+  height: min-content;
+  /* align-items:center; */ /*en el medio, ni a izquierda ni a derecha*/
+  /*justify-content: center;*/ /*si lo quisiera poner a media altura digamos....repaso de CSS*/
+}
+
+.titulo {
+  color: whitesmoke;
+  font-weight: bold;
+  font-size: 40px;
+}
+
+.myHr {
+  height: 10px;
+  background-color:rgb(225, 225, 139);
+  margin: 0px;
+}
+
+.myButton {
+  background-color: rgb(230, 220, 173);
+  width: 10em;
+  height: 5em;
+  border-radius: 75px;
+  font-weight: bold;
+  font-size: 20px;
+  margin:10px;
+  border: 5px solid black;
+  transition:0.5s;
+}
+.myButton:hover{
+  background-color:#b47303;
+  color: white;
+  cursor: pointer;
+};

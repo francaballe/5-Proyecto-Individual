@@ -1,0 +1,47 @@
+.mainContainer {
+  color:black;
+  font-weight: bolder;
+  border: 3px solid blue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20vw;
+  padding: 0.5em;
+  border-radius: 35px;
+  background-color: rgb(128, 174, 183);
+}
+
+.myH1 {
+  display: flex;
+  color: whitesmoke;
+  justify-content: center;
+}
+
+.myFlag {
+  border-radius: 35px;
+  height: 180px;
+}
+
+.pGrey{
+  width: 20vw;
+  background-color: gray;
+  font-size: 20px;
+  margin: 10px;
+  color: whitesmoke;
+}
+.pWhite{
+  width: 20vw;
+  background-color: whitesmoke;
+  font-size: 20px;
+  margin: 10px;
+}
+
+.pActivity{
+  color:white;
+  background-color: rgb(162, 75, 75);
+  border: 3px solid #034f84;
+  border-radius: 35px;
+  font-size: 15px;
+  padding: 15px;
+}
+

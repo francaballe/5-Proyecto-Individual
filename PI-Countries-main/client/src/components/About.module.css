@@ -1,0 +1,46 @@
+.cuerpoAbout {
+  font-size: 20px;
+  font-weight: bold;
+  margin:20px;
+}
+
+.mainContainer {
+  background-color: rgb(212, 212, 177);
+  opacity: 70%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content:flex-start;
+  width: 50vw;
+  height: min-content;
+  font: italic small-caps bold 5px cursive;
+}
+
+.Titulo {
+  color: rgb(76, 78, 187);
+  font-weight: bold;
+  font-size: 40px;
+}
+
+.myHr {
+  height: 10px;
+  background-color:rgb(76, 78, 187);
+  margin: 0px;
+}
+
+.button {
+  background-color: rgb(76, 78, 187);
+  width: 10em;
+  height: 5em;
+  border-radius: 75px;
+  font-weight: bold;
+  font-size: 20px;
+  margin:10px;
+  border: 5px solid black;
+  transition:0.5s;
+}
+.button:hover{
+  background-color:#b47303;
+  color: white;
+  cursor: pointer;
+};

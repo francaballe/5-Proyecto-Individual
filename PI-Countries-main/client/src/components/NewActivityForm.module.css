@@ -1,0 +1,112 @@
+.error {
+  color:red;
+}
+
+.mainContainer {
+    color:black;
+    font-weight: bolder;
+    border: 3px solid #034f84;
+    background-color:#f7cac9;
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+    padding: 0.5em;
+    border-radius: 35px;
+    align-items: center;
+  }
+
+  .countrySelectionDiv {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .myInput {
+    background-color:rgb(162, 75, 75);
+    border: 3px solid #034f84;
+    border-radius: 35px;
+    width: 90%;
+    height: 30px;
+    color:rgb(230, 220, 173);
+    font-weight: bolder;
+    text-align: center;
+  }
+  .myInput::placeholder {
+    color: whitesmoke;
+  }
+
+  .aSelector {
+    border: 3px solid #034f84;
+    border-radius: 35px;
+    width: 90%;
+    height: 35px;
+    text-align: center;
+    font-weight: bolder;
+  }
+
+  .aSelectorCountries {
+    border: 3px solid #034f84;
+    border-radius: 35px;
+    width: 90%;
+    height: 35px;
+    text-align: center;
+    font-weight: bolder;
+    background-color:rgb(162, 75, 75);
+  }
+  
+.addedCountries {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.oneAddedCountries {
+  border-radius: 35px;
+  border: 3px solid #034f84;
+  color:white;
+  background-color: rgb(162, 75, 75);
+  padding: 10px;
+  cursor: pointer;
+  font-size: 20px;
+}
+.oneAddedCountries:hover {
+  color: black;
+} 
+
+.submitButton {
+    background-color: rgb(230, 220, 173);
+    width: 8em;
+    height: 3em;
+    border-radius: 75px;
+    font-weight: bold;
+    font-size: 20px;
+    margin:10px;
+    border: 5px solid black;
+    transition:0.5s;
+  }
+  .submitButton:hover {
+    cursor: pointer;
+    background-color:#b47303;
+    color: white;
+  }
+  
+  .addButton {
+    background-color: rgb(230, 220, 173);
+    width: 7em;
+    height: 35px;
+    border-radius: 75px;
+    font-weight: bold;
+    font-size: 20px;
+    margin:10px;
+    border: 3px solid #034f84;
+    transition:0.5s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .addButton:hover {
+    background-color:#b47303;
+    color: white;
+    cursor: pointer;
+  } 

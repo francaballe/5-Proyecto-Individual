@@ -1,0 +1,60 @@
+
+.tituloNombre {
+  font-size: 30px;
+  font-weight: bolder;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.countryInfo {
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flagContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.imagenPais {
+  border: 3px solid white;
+  border-radius: 35px;
+  width: 200px;
+  height: 100px;
+}
+
+.myButton {
+  background-color: rgb(230, 220, 173);
+  width: 8em;
+  height: 3em;
+  border-radius: 75px;
+  font-weight: bold;
+  font-size: 20px;
+  margin:10px;
+  border: 5px solid black;
+  transition:0.5s;
+}
+.myButton:hover{
+  background-color:#b47303;
+  color: white;
+  cursor: pointer;
+}
+
+.mainContainer {
+  color:black;
+  font-weight: bolder;
+  border: 3px solid blue;
+  display: flex;
+  flex-direction: column;
+  width: 17vw;
+  padding: 0.5em;
+  border-radius: 35px;
+}
+.mainContainer:hover{
+  background-color: rgb(50, 149, 167);
+  color: white;
+};
