@@ -1,0 +1,3 @@
+1	"Natacion"	"3"	2	"Summer"
+2	"Ski"	"5"	3	"Winter"
+3	"Rafting"	"4"	2	"Summer"
