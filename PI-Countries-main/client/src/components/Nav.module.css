@@ -1,13 +1,3 @@
-.worldIcon {
-  border: 3px solid rgb(36, 121, 187);
-  border-radius: 35px;
-}
-.worldIcon:hover {
-  border: 3px solid whitesmoke;
-  position: relative;
-  bottom: 5px;
-}
-
 .mainContainer {
   border: 3px solid rgb(36, 121, 187);
   padding: 0.5em;
@@ -48,4 +38,14 @@
   align-items: center;
   width: 500px;
   justify-content: space-around;
+}
+
+.worldIcon {
+  border: 3px solid rgb(36, 121, 187);
+  border-radius: 35px;
+}
+.worldIcon:hover {
+  border: 3px solid whitesmoke;
+  position: relative;
+  bottom: 5px;
 }

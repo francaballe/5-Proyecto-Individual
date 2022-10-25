@@ -61,8 +61,7 @@ const CountryCard = ({countryId}) => {
         <p className={style.pWhite}>Area: {area} Km²</p>
         <p className={style.pGrey}>Population: {population}</p>
         <p className={style.pWhite}>Activities: </p>
-        {isArrayAndNotEmpty()?selectedCountry.activities.map(unaActividad=><p className={style.pActivity}>{unaActividad.name} 
-        ( {unaActividad.season} )</p>) : <p className={style.pActivity}>None</p>}
+        {isArrayAndNotEmpty()?selectedCountry.activities.map(unaActividad=><p className={style.pActivity}>{unaActividad.name} ({unaActividad.season})</p>) : <p className={style.pActivity}>None</p>}
         
       </div>
     );
