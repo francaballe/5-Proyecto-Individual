@@ -51,6 +51,14 @@ function App() {
     dispatch(getCountries());
   },[dispatch])
   
+  //En realidad lo separé para solucionar un efecto no esperado si uno selecciona
+  //una página 26 por ejemplo y luego cambia a continente "Asia". No mostraba nada hasta que uno
+  // elegía la página 1 por ejemplo...Solución en conjunto con Paging.jsx
+  useEffect(()=>{
+    //console.log("me renderizo pero además cambió el valor de allCountries")
+    setCurrentPage(1)
+  },[allCountries])
+  
 
   return (
     <div className={style.App}>
@@ -65,7 +73,6 @@ function App() {
       <div>
         <SelectAndSearchContainer/>
         <Paging
-            countriesPerPage={countriesPerPage}
             allCountriesLength={allCountries.length}//le paso asi porque necesito un valor numerico
             paging={paging}
         />

@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from 'react';
+import { useSelector } from "react-redux";
 import style from './Paging.module.css';
 
-const Paging = ({countriesPerPage, allCountriesLength, paging}) => {  
+const Paging = ({allCountriesLength, paging}) => {  
 const pageNumbers = [];//la idea es que si tengo 7 paginas---> [1,2,3,4,5,6,7]
 
 let cantidadPaginas = 0;
@@ -36,6 +37,17 @@ const onClickHandler = function (unNumero){
     setCurrentIndex(unNumero);
   }
 }
+
+//para solucionar un bug que me daba al no mostrar ninguna pagina excepto si le hacia click.
+//solución en conjunto con lo que hice en App.js.
+const allCountries = useSelector((state) => state.sumOfAllFilters);
+useEffect(()=>{
+  //console.log("me renderizo pero además cambió el valor de allCountries")
+  setCurrentIndex(1)
+},[allCountries])
+
+
+
 
 
  //Le tuve que agregar una Key porque los warnings no paraban de molestar...
