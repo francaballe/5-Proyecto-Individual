@@ -1,5 +1,12 @@
 import axios from "axios";
 
+export function setDayNight(dayOrNight){
+    return{
+        type: "SET_DAY_NIGHT",
+        payload: dayOrNight
+    }
+}
+
 export function getCountriesByActivity(activityId){
     return {
         type: "GET_COUNTRIES_BY_ACTIVITY",

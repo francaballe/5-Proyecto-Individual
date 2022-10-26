@@ -8,13 +8,21 @@ const initialState = {
     sumOfAllFilters: [],    
     likeFilteredArray: [],
     continentFilteredArray: [],
-    activityFilteredArray: []
+    activityFilteredArray: [],
 
+    //...y mi estado para el modo dia o noche, por defecto, seteado en dia.
+    modoDiaNoche: "DAY"
   };
   
   function rootReducer (state = initialState, action) {
 
     switch(action.type) {
+
+        case "SET_DAY_NIGHT":
+          return {
+            ...state,
+            modoDiaNoche:action.payload
+          }
 
         case "GET_COUNTRIES_BY_ACTIVITY":
           
