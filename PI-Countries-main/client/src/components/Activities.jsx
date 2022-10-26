@@ -8,6 +8,7 @@ import {getActivities} from "../redux/actions/index";
 //En este component me voy a traer todo lo que tiene el estado global, en particular, mi prop. activities
 const Activities = () => {
   
+  const dayOrNigth = useSelector((state) => state.modoDiaNoche);
   const dispatch = useDispatch();
   const allActivities = useSelector((state) => state.activities);
   useEffect(()=>{
@@ -19,8 +20,8 @@ const Activities = () => {
 if (allActivities.length){// solo muestro si el array no esta vacio
     return (
     <>
-    <h1 className={style.Titulo}>ACTIVITIES</h1>
-    <div className={style.mainContainer}>
+    <h1 className={dayOrNigth==="NIGHT"?style.Titulo_black:style.Titulo}>ACTIVITIES</h1>
+    <div className={dayOrNigth==="NIGHT"?style.mainContainer_black:style.mainContainer}>
       
       {allActivities.map(unaActividad=><OneActivity
       Id={unaActividad.Id}

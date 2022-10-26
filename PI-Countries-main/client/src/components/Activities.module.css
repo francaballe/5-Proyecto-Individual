@@ -6,9 +6,24 @@
   padding: 0.5em;
   border-radius: 35px;
   background-color: #92a8d1;
-  opacity: 90%;
+  opacity: 80%;
   justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+}
 
+.mainContainer_black {
+  color:black;
+  font-weight: bolder;
+  border: 3px solid black;
+  width: auto;
+  padding: 0.5em;
+  border-radius: 35px;
+  background-color: grey;
+  opacity: 80%;
+  justify-content: center;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
@@ -17,6 +32,10 @@
 
 .Titulo {
   color: #f7786b;
+}
+
+.Titulo_black {
+  color: grey;
 }
 
 .notFound {
