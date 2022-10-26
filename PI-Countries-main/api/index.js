@@ -6,12 +6,14 @@ const axios = require("axios");
 
 // Syncing all the models at once.
 //conn.sync({ force: true }).then(() => {
-conn.sync().then(() => { //cambiar esto a ALTER: TRUE una vez que todo este listo.....ver si conviene
+//Utilizo ahora, que ya finalicé con todas las pruebas, el modo por defecto 
+//(This creates the table if it doesn't exist (and does nothing if it already exists))
+conn.sync().then(() => {
   server.listen(3001, () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
 
-  //voy a poner, en principio, mi fetch a la API de paises aca....veremos
+  //voy a poner, en principio, mi fetch a la API de paises acá.
   const fetchDataAsync = async () =>{
     const response = await axios.get("https://restcountries.com/v3/all")
     

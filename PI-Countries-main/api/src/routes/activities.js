@@ -5,7 +5,7 @@ const getActivities = require("../controllers/getActivities.js");
 const deleteActivity = require("../controllers/deleteActivity");
 
 router.post("/", async function (req,res){
-    console.log(req.body)
+    //console.log(req.body)
     try{
         const respuesta = await createActivity(req.body);
         //res.send(respuesta);//no necesito realmente devolver nada, por mas que haya armado el controller con una devolucion de datos...

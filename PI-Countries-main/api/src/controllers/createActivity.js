@@ -36,11 +36,8 @@ const createActivity = async function (data) {
       }
     }
 
-    //Aca viene la cosa: si el "nombre" de la actividad YA existe, la actualizo. Si no existe, la creo
-    //esta decision es "algo" arbitraria, ya que si actualizo los datos de la actividad lo hago para todo los paises
-    //Mejor, tomando mi propia decisión, voy a hacer un nuevo registro SIN validar el nombre. Es decir
-    //se va a crear una nueva entrada en la BBDD cada vez que yo ponga "Create Activity". Tiene mucho más sentido...
-    //llegado el caso, voy a usar findOrCreate
+    //Tomé la decisión arbitraria de crear una nueva actividad cada vez, sin controlar si ya existe una similar.
+    //Es lo que más tiene sentido por cómo está planteado el problema.
     //console.log(data) //ojo, aca tengo tambien countries que NO es de la tabla activities
     try{
        //le podria haber pasado data y funciona OK por mas que tenga un dato de sobra, pero no es lo correcto
@@ -48,6 +45,7 @@ const createActivity = async function (data) {
       const {name,difficulty,duration,season,countries} = data;
        const newActivity =  await Activity.create({name,difficulty,duration,season});
        //console.log(newActivity.getDataValue("Id"))
+       //console.log("Metodos:",newActivity.__proto__) //ESTO ES MUCHO MAS SENCILLO para obtener los métodos que tiene un objeto.
       
       for (let i=0;i<countries.length;i++){
         //("countryId","activityId") //Si no era por el console.log....como sabia que argumentos esperaba una funcion que yo no creé...
