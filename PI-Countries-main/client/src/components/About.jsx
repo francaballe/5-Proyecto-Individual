@@ -1,10 +1,15 @@
 import React from 'react';
 import style from './About.module.css';
-import {Link} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
 const CountryCard = (props) => {
-    
-    return (
+
+  const history = useHistory();
+  const onClickHandler = (event) => {
+    history.push("/countries");
+  }
+
+  return (
       <div className={style.mainContainer}>
           <hr className={style.myHr}/>
           <h1 className={style.Titulo}>About me...</h1>
@@ -18,9 +23,9 @@ const CountryCard = (props) => {
             <p>quit a well paid job. So I did...no regrets at all.</p>
             <p>Someone said "Do what you love, and you'll never work another day in your life."</p>
           </div>
-          <Link to="/countries">
-            <button className={style.button}>Go Back!</button>
-          </Link>
+          <div>
+            <button onClick={onClickHandler} className={style.button}>Go Back!</button>
+            </div>
           <hr className={style.myHr}/>
       </div>
     );

@@ -31,7 +31,7 @@ const [errorCountries,setErrorCountries] = useState("");
 const actNameChangeHandler = (event) => {
   const aName = event.target.value
   setActivityName(aName);
-  //como dijo Jorgito, super googleables las reg.exp. //que comience con letra, que tenga un máximo 
+  //como dijo Jorgito, super googleables las reg.exp. Que comience con letra, que tenga un máximo 
   //de 40 caracteres (alcanza y sobra), que pueda tener cualquier caracter unicode (letra o número) 
   //y cualquiera de estos caracteres: _@,.&$%#
   if (!/^(?=[\p{L}])[\p{L}\p{N}_@,.&$%#\s-]{1,40}$/u.test(aName)){
@@ -163,9 +163,7 @@ const submitHandler = (event) => {
                 <option>Choose a Country</option>
                 {allCountriesCopy.map(unaOpcion=><option value={unaOpcion.Id} key={unaOpcion.Id}>{unaOpcion.name}</option>)}                  
             </select>
-            {/* <button onClick={countryAddClickHandler} disabled={!enableButton} className={style.addButton}>ADD</button> */}
-            {/*TUVE QUE CAMBIAR EL TIPO DE BOTON...A OTRA COSA, UNA DIV..PORQUE ME HACIA SUBMIT DEL FORM...CUALQUIERA*/}
-            <div onClick={countryAddClickHandler} disabled={!enableButton} className={style.addButton}>ADD</div>
+            <button type="button" onClick={countryAddClickHandler} disabled={!enableButton} className={style.addButton}>ADD</button>
           </div>
 
           <div className={style.addedCountries}>

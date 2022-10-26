@@ -10,8 +10,7 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content:flex-start;
-  width: 50vw;
+  width: auto;
   height: min-content;
   font: italic small-caps bold 5px cursive;
 }
