@@ -54,7 +54,10 @@
   padding: 0.5em;
   border-radius: 35px;
 }
+
 .mainContainer:hover{
   background-color: rgb(50, 149, 167);
   color: white;
 };
+
+

@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import style from './Paging.module.css';
 
 const Paging = ({allCountriesLength, paging}) => {  
+
+const dayOrNigth = useSelector((state) => state.modoDiaNoche);
 const pageNumbers = [];//la idea es que si tengo 7 paginas---> [1,2,3,4,5,6,7]
 
 let cantidadPaginas = 0;
@@ -52,11 +54,13 @@ useEffect(()=>{
 
  //Le tuve que agregar una Key porque los warnings no paraban de molestar...
 if (allCountriesLength){// solo muestro si es mayor que 0
+  
   return (
-    <div className={style.mainContainer}>
+    <div className={dayOrNigth==="NIGHT"?style.mainContainer_black:style.mainContainer}>
         
         {pageNumbers.map(unNumero => (
-        <button className={unNumero!==currentIndex? style.myButton:style.myButtonPressed} key={unNumero} onClick={onClickHandler(unNumero)}>{unNumero}</button>))}
+        
+        <button className={unNumero!==currentIndex? (dayOrNigth==="NIGHT"? style.myButton_black:style.myButton):style.myButtonPressed} key={unNumero} onClick={onClickHandler(unNumero)}>{unNumero}</button>))}
       
     </div> 
   )}

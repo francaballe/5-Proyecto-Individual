@@ -1,16 +1,18 @@
 import React from 'react';
 import style from './About.module.css';
 import {useHistory} from "react-router-dom";
+import {useSelector} from "react-redux";
 
 const CountryCard = (props) => {
 
+  const dayOrNigth = useSelector((state) => state.modoDiaNoche);
   const history = useHistory();
   const onClickHandler = (event) => {
     history.push("/countries");
   }
 
   return (
-      <div className={style.mainContainer}>
+      <div className={dayOrNigth==="NIGHT"?style.mainContainer_black:style.mainContainer}>
           <hr className={style.myHr}/>
           <h1 className={style.Titulo}>About me...</h1>
           <hr className={style.myHr}/>

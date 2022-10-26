@@ -12,6 +12,20 @@
   opacity: 80%;
 }
 
+.mainContainer_black {
+  border: 3px solid rgb(36, 121, 187);
+  padding: 0.5em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 95vw;              /*100% de mi viewport me genera scroll. Esto lei que no funciona con IE8 o menor*/
+  height: 50px;
+  background-color: black;
+  font-weight: bold;
+  font-size: 22px;
+  opacity: 80%;
+}
+
 .aSelector {
   border: 3px solid rgb(36, 121, 187);
   border-radius: 35px;

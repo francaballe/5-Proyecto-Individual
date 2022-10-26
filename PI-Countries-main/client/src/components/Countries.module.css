@@ -13,6 +13,21 @@
   justify-items:center;
 }
 
+.mainContainer_black {
+  border: 3px solid rgb(36, 121, 187);
+  padding: 0.5em;
+  width: 95vw;              /*100% de mi viewport me genera scroll. Esto lei que no funciona con IE8 o menor*/
+  background-color: black;
+  font-weight: bold;
+  font-size: 22px;
+  opacity: 80%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+  justify-items:center;
+}
+
 .notFound {
   font-size: 30px;
   font-weight: bolder;

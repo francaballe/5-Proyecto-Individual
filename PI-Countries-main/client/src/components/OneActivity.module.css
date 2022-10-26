@@ -11,6 +11,21 @@
   align-items: center;
 }
 
+.mainContainer_black {
+  color:black;
+  font-weight: bolder;
+  border: 3px solid #034f84;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  width: 20vw;
+  padding: 0.5em;
+  border-radius: 35px;
+  align-items: center;
+  color: whitesmoke;
+}
+
+
 .myCountry {
   display: flex;
   flex-direction: column;

@@ -8,6 +8,7 @@ import {useHistory} from "react-router-dom";
 
 const NewActivityForm = () => {  
 
+const dayOrNigth = useSelector((state) => state.modoDiaNoche);
 const allCountries = useSelector((state) => state.countries);  
 const allCountriesCopy = useSelector((state) => state.countriesCopy);
 const dispatch = useDispatch();
@@ -81,7 +82,7 @@ const countryAddClickHandler = (event) => {
     }
 }
 
- //por el delay, es la única forma que tengo de deshabilitar el botón si countriesSelected está vacío.
+ //Deshabilito el botón si countriesSelected está vacío.
  useEffect(()=>{
   //console.log(countriesSelected.length)
   if (!countriesSelected.length){
@@ -133,7 +134,7 @@ const submitHandler = (event) => {
 
     return (
       <form onSubmit={submitHandler}>
-        <div className={style.mainContainer}>
+        <div className={dayOrNigth==="NIGHT"?style.mainContainer_black:style.mainContainer}>
           <h1>Activity Creation</h1>
           <h4>Activity Name:</h4>
           {errorName && <p className={style.error}>{errorName}</p>}

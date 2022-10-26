@@ -15,6 +15,18 @@
   font: italic small-caps bold 5px cursive;
 }
 
+.mainContainer_black {
+  background-color: black;
+  opacity: 70%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: min-content;
+  font: italic small-caps bold 5px cursive;
+  color: whitesmoke;
+}
+
 .Titulo {
   color: rgb(76, 78, 187);
   font-weight: bold;

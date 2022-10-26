@@ -1,11 +1,14 @@
 import OneCountry from './OneCountry.jsx';
 import style from './Countries.module.css';
+import {useSelector} from "react-redux";
 
 const Countries = ({currentCountries}) => {
 
+  const dayOrNigth = useSelector((state) => state.modoDiaNoche);
+
 if (currentCountries.length){// solo muestro si el array no esta vacio
     return (
-    <div className={style.mainContainer}>
+    <div className={dayOrNigth==="NIGHT"? style.mainContainer_black:style.mainContainer}>
 
       {currentCountries.map(unPais=><OneCountry
       Id={unPais.Id}

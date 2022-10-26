@@ -7,6 +7,8 @@ import {getCountriesByActivity, orderCountriesBy, getActivities, filterCountries
 const SelectAndSearchContainer = (props) => {
 
   const dispatch = useDispatch();
+  const dayOrNigth = useSelector((state) => state.modoDiaNoche);
+
   const allActivities = useSelector((state) => state.activities);
   useEffect(()=>{
     dispatch(getActivities());
@@ -52,7 +54,7 @@ const SelectAndSearchContainer = (props) => {
   }
 
         return (
-            <div className={style.mainContainer}>
+            <div className={dayOrNigth==="NIGHT"? style.mainContainer_black:style.mainContainer}>
               <div className={style.selectorsContainer}>
 
                 <select onChange={selectedContinentHandler} className={style.aSelector}>

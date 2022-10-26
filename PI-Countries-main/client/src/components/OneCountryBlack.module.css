@@ -1,0 +1,15 @@
+.mainContainer_black {
+  color:whitesmoke;
+  font-weight: bolder;
+  border: 3px solid whitesmoke;
+  display: flex;
+  flex-direction: column;
+  width: 17vw;
+  padding: 0.5em;
+  border-radius: 35px;
+}
+.mainContainer_black:hover{
+    background-color: rgb(50, 149, 167);
+    color: black;
+};
+  

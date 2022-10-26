@@ -1,10 +1,12 @@
 import React from 'react';
 import style from './OneActivity.module.css';
 import {deleteActivity} from "../redux/actions/index";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 const OneActivity = (props) => {  
 
+  const dayOrNigth = useSelector((state) => state.modoDiaNoche);
+  
   //no se por que cuando son muchas props me parece mas prolijo destructurarlas fuera del argumento de la funcion
   const {Id,difficulty,duration,name,season,countries} = props;
   
@@ -15,7 +17,7 @@ const OneActivity = (props) => {
   } 
 
     return (
-      <div className={style.mainContainer}>
+      <div className={dayOrNigth==="NIGHT"? style.mainContainer_black:style.mainContainer}>
       
         <h1>{name}</h1>
         <p className={style.pRed}>Season: {season}</p>
