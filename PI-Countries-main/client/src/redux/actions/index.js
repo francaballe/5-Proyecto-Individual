@@ -80,22 +80,6 @@ export function deleteActivity(Id){
         })} 
 }
 
-export function removeFromCountriesCopy(Id){
-    return async function(dispatch){
-    return dispatch({
-        type: "REMOVE_FROM_COUNTRIES_COPY",
-        payload: Id
-    })}
-}
-
-export function addToCountriesCopy(oneCountry){
-    return async function(dispatch){
-    return dispatch({
-        type: "ADD_TO_COUNTRIES_COPY",
-        payload: oneCountry
-    })}
-}
-
 export function createActivity(data){
     return async function(dispatch){
         //console.log("por algun motivo me estan invocando...") //cualquier boton del form, por mas que tenga o no type=submit, me estaba haciendo el submit.

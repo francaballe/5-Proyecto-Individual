@@ -1,8 +1,8 @@
 const initialState = {
+    //Estados "normales"
     countries: [],
     country: {},
     activities: [],
-    countriesCopy: [], //este tal vez lo podría haber hecho local al componente....y no global, ya que no lo uso para mas nada
     
     //Mis estados para los filtros...
     sumOfAllFilters: [],    
@@ -113,27 +113,10 @@ const initialState = {
 
           return {
             ...state,
-            //cosas que uno aprende....curiosamente no? si tan solo le pasaba el array asi ----> sumOfAllFilters: [...arrayDesordenado] no rerenderizaba
-            //ya que conceptualmente el array es el mismo (misma direccion de memoria), pero ordenado, es decir, por mas ordenado que esté, no cambió.
-            //ahora, si le asigno una copia....es distinto. Por eso uso el spread operator....que bien!
             sumOfAllFilters: [...arrayDesordenado] //lo voy a devolver ordenado según uno de los 4 criterios.
-          }
-
-        case "ADD_TO_COUNTRIES_COPY":
-          return {
-            ...state,
-            countriesCopy: [...state.countriesCopy,action.payload]
-          }
-        
-        case "REMOVE_FROM_COUNTRIES_COPY":
-          return {
-            ...state,
-            countriesCopy: state.countriesCopy.filter(unPais => (unPais.Id!==action.payload))
           }
       
         case "DELETE_ACTIVITY":
-          //ESTUVE 10!!!! HORAS....10 HORAS PERDIDAS POR HABER ESCRITO id EN LUGAR DE Id...y la re p/)(/=)()
-          //console.log(state.activities)
           return {
             ...state,
             activities: state.activities.filter(unaActividad => (unaActividad.Id!==action.payload)) 
@@ -143,7 +126,6 @@ const initialState = {
           return {
             ...state,
             countries: action.payload,
-            countriesCopy: action.payload,
             sumOfAllFilters: action.payload,
             continentFilteredArray: action.payload, //inicialmente va a tener todo para todos los continentes
             likeFilteredArray: action.payload, //inicialmente va a tener 0 filtros "like", o sea, todos los países.

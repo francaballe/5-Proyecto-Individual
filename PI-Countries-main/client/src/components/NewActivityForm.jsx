@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import style from './NewActivityForm.module.css';
 import {useDispatch, useSelector} from "react-redux";
-import {removeFromCountriesCopy} from "../redux/actions/index";
-import {addToCountriesCopy} from "../redux/actions/index";
 import {createActivity} from "../redux/actions/index";
 import {useHistory} from "react-router-dom";
 
@@ -10,9 +8,30 @@ const NewActivityForm = () => {
 
 const dayOrNigth = useSelector((state) => state.modoDiaNoche);
 const allCountries = useSelector((state) => state.countries);  
-const allCountriesCopy = useSelector((state) => state.countriesCopy);
 const dispatch = useDispatch();
 const history = useHistory();
+const [allCountriesCopy,setAllCountriesCopy] = useState([]);
+
+//Espero que se cargue algo en allCountries y recién ahí hago el set.
+useEffect(()=>{
+  setAllCountriesCopy([...allCountries]);
+},[allCountries])
+
+
+//Ordenando la copia de mi array con todos los países.Puedo ordenar el estado directamente!!!
+allCountriesCopy.sort((a, b) => {
+  let fa = a.name.toLowerCase(),
+      fb = b.name.toLowerCase();
+
+  if (fa < fb) {
+      return -1;
+  }
+  if (fa > fb) {
+      return 1;
+  }
+  return 0;
+});
+
 
 //Declaro mis estados locales...(podria haber creado 1 solo estado que aune los 4 del formulario en si, pero por la cantidad ni se justifica...)
 const [activityName,setActivityName] = useState("");
@@ -21,20 +40,47 @@ const [duration,setDuration] = useState("");//ídem con este estado....duracion 
 const [season,setSeason] = useState("Winter");//valor inicial arbitrario que ya setee en el combo.
 const [enableButton,setEnableButton] = useState(false);
 const [countriesSelected, setCountriesSelected] = useState([]);//va a tener potencialmente 1 o más países...por lo cual se me ocurre que un array es lo mejor...
-const [selectedCountryId, setSelectedCountryId] = useState([]);
+const [selectedCountryId, setSelectedCountryId] = useState("Choose a Country");
 
-
-//Estado de manejo de Errores
+//Estados de manejo de Errores
 const [errorName,setErrorName] = useState("");
 const [errorDuration,setErrorDuration] = useState("");
 const [errorCountries,setErrorCountries] = useState("");
 
+
+/********************************************FUNCIONES************************************************/
+function removeFromCountriesCopy(selectedCountryId){
+    setAllCountriesCopy(allCountriesCopy.filter(unPais => (unPais.Id!==selectedCountryId)))
+  return;
+}
+
+function addToCountriesCopy(reAddingCountry){
+  setAllCountriesCopy([...allCountriesCopy,reAddingCountry])
+  return;
+}
+
+function buscarPaisId (Id){
+  let match = "";
+  if (allCountries && allCountries.length){
+    for (let i=0;i<allCountries.length;i++){
+      if (allCountries[i].Id===Id){
+        match = allCountries[i];
+      }
+    }
+  }
+  //console.log(match)
+   return match;
+} 
+
+
+/********************************************HANDLERS*************************************************/
+
+//Handler de cambio de nombre de la actividad
 const actNameChangeHandler = (event) => {
   const aName = event.target.value
   setActivityName(aName);
-  //como dijo Jorgito, super googleables las reg.exp. Que comience con letra, que tenga un máximo 
-  //de 40 caracteres (alcanza y sobra), que pueda tener cualquier caracter unicode (letra o número) 
-  //y cualquiera de estos caracteres: _@,.&$%#
+  //Que comience con letra, que tenga un máximo de 40 caracteres (alcanza y sobra), que pueda tener 
+  //cualquier caracter unicode (letra o número) y cualquiera de estos caracteres: _@,.&$%#
   if (!/^(?=[\p{L}])[\p{L}\p{N}_@,.&$%#\s-]{1,40}$/u.test(aName)){
     setErrorName("Invalid Activity Name");
   }
@@ -43,8 +89,8 @@ const actNameChangeHandler = (event) => {
   }
 }
 
-//No hace falta control de errores. Está bindeado el estado y el value y es un combo desplegable con 
-//un valor por defecto ya colocado, más algunos más como única opción
+//No hace falta control de errores para este caso puntual. Está bindeado el estado y el value y es un 
+//combo desplegable con un valor por defecto ya colocado, más algunos más como única opción.
 const difficultyChangeHandler = (event) => {
   setDifficulty(event.target.value);
 }
@@ -59,68 +105,38 @@ const durationChangeHandler = (event) => {
   else{
     setErrorDuration("");
   }
-  
 }
+
+//Handler de cambio de estación
 const seasonChangeHandler = (event) => {
   setSeason(event.target.value);
 }
 
-//!countriesSelected.length}>
+//handler de selección de un país ANTES de agregarlo
 const countrySelectedHandler = (event) => {
-  setEnableButton(true);
   setSelectedCountryId(event.target.value)
 }
 
-//Handler del ADD Button
+//Handler del ADD Button del país
 const countryAddClickHandler = (event) => {  
-    //console.log("que tengo aca:" + selectedCountryId) //Choose a Country
     if (selectedCountryId!=="Choose a Country"){
       const unSet = new Set([...countriesSelected,selectedCountryId])
       unSet.delete("") //elimino el vacio que me devuelve
       setCountriesSelected([...unSet])
-      dispatch(removeFromCountriesCopy(selectedCountryId));
+      removeFromCountriesCopy(selectedCountryId);
     }
-}
-
- //Deshabilito el botón si countriesSelected está vacío.
- useEffect(()=>{
-  //console.log(countriesSelected.length)
-  if (!countriesSelected.length){
     setEnableButton(false);
-    setErrorCountries("At least One Country Must be Selected");
-    }
-    else{
-        setErrorCountries("");
-    }
- },[countriesSelected])
-
-
-const removeSelectedCountryHandler = (event) => {
-  const reAddingCountry = buscarPaisId(event.target.value);//Me traigo el objeto completo de mi countries original, asi lo reingreso a countrieCopy
-  dispatch(addToCountriesCopy(reAddingCountry));
-  setCountriesSelected(countriesSelected.filter(oneCountryId=>oneCountryId!==event.target.value))
 }
 
-function buscarPaisId (Id){
-  let match = "";
-  if (allCountries && allCountries.length){
-    for (let i=0;i<allCountries.length;i++){
-      if (allCountries[i].Id===Id){
-        match = allCountries[i];
-      }
-    }
-  }
-  //console.log(match)
-  return match;
+//Handler de remover países
+const removeSelectedCountryHandler = (event) => {
+  const reAddingCountry = buscarPaisId(event.target.value); //Me traigo el objeto completo de mi countries original, asi lo reingreso a countrieCopy
+  addToCountriesCopy(reAddingCountry); 
+  setCountriesSelected(countriesSelected.filter(oneCountryId=>oneCountryId!==event.target.value))
 }
 
 const submitHandler = (event) => {
   event.preventDefault();
-  /* console.log(activityName);
-  console.log(difficulty);
-  console.log(duration);
-  console.log(season);
-  console.log(countriesSelected); */
   dispatch(createActivity({
     "name":activityName,
     "difficulty":parseInt(difficulty),
@@ -132,6 +148,28 @@ const submitHandler = (event) => {
   history.push("/countries");
 }
 
+/******************************************ALGUNOS UseEffect******************************************/
+//Add Button On and Off.
+useEffect(()=>{
+  if (selectedCountryId!=="Choose a Country"){
+    setEnableButton(true);
+  }else{
+    setEnableButton(false);
+  }
+ },[selectedCountryId])
+
+ //Deshabilito el botón si countriesSelected está vacío.
+ useEffect(()=>{
+  if (!countriesSelected.length){
+    setEnableButton(false);
+    setErrorCountries("At least One Country Must be Selected");
+    }
+    else{
+        setErrorCountries("");
+    }
+ },[countriesSelected])
+
+ /******************************************* RENDERIZADO *******************************************/
     return (
       <form onSubmit={submitHandler}>
         <div className={dayOrNigth==="NIGHT"?style.mainContainer_black:style.mainContainer}>
@@ -160,7 +198,7 @@ const submitHandler = (event) => {
           <h4>Countries:</h4>
           {errorCountries && <p className={style.error}>{errorCountries}</p>}
           <div className={style.countrySelectionDiv}>
-            <select onChange={countrySelectedHandler} className={style.aSelectorCountries}>                  
+            <select onChange={countrySelectedHandler} value={selectedCountryId} className={style.aSelectorCountries}>                  
                 <option>Choose a Country</option>
                 {allCountriesCopy.map(unaOpcion=><option value={unaOpcion.Id} key={unaOpcion.Id}>{unaOpcion.name}</option>)}                  
             </select>
