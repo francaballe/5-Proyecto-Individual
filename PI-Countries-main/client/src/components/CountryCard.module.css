@@ -11,6 +11,20 @@
   background-color: rgb(128, 174, 183);
 }
 
+.mainContainer_black {
+  color:black;
+  font-weight: bolder;
+  border: 3px solid grey;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20vw;
+  padding: 0.5em;
+  border-radius: 35px;
+  background-color: black;
+  opacity: 80%;
+}
+
 .myH1 {
   display: flex;
   color: whitesmoke;

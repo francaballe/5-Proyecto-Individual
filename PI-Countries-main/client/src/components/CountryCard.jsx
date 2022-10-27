@@ -5,9 +5,7 @@ import style from './CountryCard.module.css';
 
 const CountryCard = ({countryId}) => {
     
-    //voy a recibir el Id se me ocurre...y a llamar a mi accion...que a su vez hace un fetch con axios...vos me entendes..  
-    //console.log(countryId)
-    
+    const dayOrNigth = useSelector((state) => state.modoDiaNoche);
     const dispatch = useDispatch();
     const selectedCountry = useSelector((state) => state.country);
 
@@ -16,13 +14,10 @@ const CountryCard = ({countryId}) => {
       dispatch(getCountry(countryId));
     },[dispatch,countryId])
 
-    //estoy reusando una funcion que ya use en OneCountry...
+    //estoy reusando una funcion que ya usé en OneCountry...
     function numberWithDots(aNumber) {
       return aNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");//La expresión regular la busqué en internet...para que no soy mago...
     }
-
-    //para las actividades se me ocurre que voy a tener que renderizar con un map el arreglo...
-    //y en caso vacio, mostrar un "ninguna" o "none"
 
     //console.log(typeof(selectedCountry.area))
     var area = 0;
@@ -51,7 +46,7 @@ const CountryCard = ({countryId}) => {
     //console.log(isArrayAndNotEmpty()?"Tengo algo":"Estoy vacio")
 
     return (
-      <div className={style.mainContainer}>
+      <div className={dayOrNigth==="NIGHT"? style.mainContainer_black:style.mainContainer}>
         <h1 className={style.myH1}>{selectedCountry.name}</h1>
         <img className={style.myFlag} src={selectedCountry.flagImg} alt="bandera"></img>
         <p className={style.pWhite}>Country Code Alpha 3: {selectedCountry.Id}</p>

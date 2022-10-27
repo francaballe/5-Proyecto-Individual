@@ -114,7 +114,7 @@ const initialState = {
           return {
             ...state,
             //cosas que uno aprende....curiosamente no? si tan solo le pasaba el array asi ----> sumOfAllFilters: [...arrayDesordenado] no rerenderizaba
-            //ya que conceptualmente el array es el mismo (misma direccion de memoria), pero ordenado, es decir, por mas ordenado que esté, no cambio.
+            //ya que conceptualmente el array es el mismo (misma direccion de memoria), pero ordenado, es decir, por mas ordenado que esté, no cambió.
             //ahora, si le asigno una copia....es distinto. Por eso uso el spread operator....que bien!
             sumOfAllFilters: [...arrayDesordenado] //lo voy a devolver ordenado según uno de los 4 criterios.
           }

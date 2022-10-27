@@ -14,7 +14,6 @@ import Paging from "./components/Paging";
 import Activities from "./components/Activities";
 import NewActivityForm from "./components/NewActivityForm";
 
-//recordar que en la forma "components" no le puedo pasar props...
 function App() {
 
   //console.log("ME RENDERIZO!!!")
@@ -38,7 +37,7 @@ function App() {
   }
   
   
-  //los paises que tengo actualmente en mi pagina. Voy a partir mi array basado en 2 parametros...desde el primer pais y al ultimo
+  //los paises que tengo actualmente en mi página. Voy a partir mi array basado en 2 parámetros...desde el primer pais y al ultimo
   const currentCountries = allCountries.slice(indexOfFirstCountry,indexOfLastCountry);
 
   //se la voy a pasar a Paging para, en la medida que hago click, actualizar mi estado CurrentPage
@@ -73,7 +72,7 @@ function App() {
       <div>
         <SelectAndSearchContainer/>
         <Paging
-            allCountriesLength={allCountries.length}//le paso asi porque necesito un valor numerico
+            allCountriesLength={allCountries.length}//le paso asi porque necesito un valor numérico
             paging={paging}
         />
         <Countries currentCountries={currentCountries}/>
@@ -98,8 +97,6 @@ function App() {
           <Activities/>
         </>
       }/>
-
-      
 
     </div>
   
