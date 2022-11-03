@@ -1,5 +1,11 @@
 import axios from "axios";
 
+export function emptyCountryCard(){
+    return{
+        type: "EMPTY_COUNTRY_CARD"
+    }
+}
+
 export function setDayNight(dayOrNight){
     return{
         type: "SET_DAY_NIGHT",

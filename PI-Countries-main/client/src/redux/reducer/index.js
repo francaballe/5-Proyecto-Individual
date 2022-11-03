@@ -18,6 +18,12 @@ const initialState = {
 
     switch(action.type) {
 
+        case "EMPTY_COUNTRY_CARD":
+          return {
+            ...state,
+            country:{}
+          }
+
         case "SET_DAY_NIGHT":
           return {
             ...state,

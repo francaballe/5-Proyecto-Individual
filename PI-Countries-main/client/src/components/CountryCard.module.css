@@ -59,3 +59,14 @@
   padding: 15px;
 }
 
+.loading{
+  display: flex;
+  /* background-color: red; */
+  /* align-items: flex-start;
+  justify-content: flex-start; */
+  /* align-content: flex-start; */
+  /* align-self: center;
+  justify-self: center; */
+  /* top: 500px;
+  left: 500px; */
+}

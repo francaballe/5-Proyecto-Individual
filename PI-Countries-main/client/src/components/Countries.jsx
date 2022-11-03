@@ -1,3 +1,4 @@
+import React from 'react';
 import OneCountry from './OneCountry.jsx';
 import style from './Countries.module.css';
 import {useSelector} from "react-redux";

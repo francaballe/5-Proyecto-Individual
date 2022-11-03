@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {getCountry} from "../redux/actions/index";
+import {emptyCountryCard} from "../redux/actions/index";
 import style from './CountryCard.module.css';
+import loadingImg from "../resources/Loading.gif";
 
 const CountryCard = ({countryId}) => {
     
@@ -12,7 +14,10 @@ const CountryCard = ({countryId}) => {
     //tuve que agregar ambas dependencias...no solo que getCountry este OK, sino que tenga algo el Id.
     useEffect(()=>{
       dispatch(getCountry(countryId));
+      dispatch(emptyCountryCard());
     },[dispatch,countryId])
+
+    
 
     //estoy reusando una funcion que ya usé en OneCountry...
     function numberWithDots(aNumber) {
@@ -43,8 +48,12 @@ const CountryCard = ({countryId}) => {
       }
     }
     
-    //console.log(isArrayAndNotEmpty()?"Tengo algo":"Estoy vacio")
 
+    function isEmpty(obj) {
+      return Object.keys(obj).length === 0;
+    }
+
+    if (!isEmpty(selectedCountry)){
     return (
       <div className={dayOrNigth==="NIGHT"? style.mainContainer_black:style.mainContainer}>
         <h1 className={style.myH1}>{selectedCountry.name}</h1>
@@ -56,10 +65,17 @@ const CountryCard = ({countryId}) => {
         <p className={style.pWhite}>Area: {area} Km²</p>
         <p className={style.pGrey}>Population: {population}</p>
         <p className={style.pWhite}>Activities: </p>
-        {isArrayAndNotEmpty()?selectedCountry.activities.map(unaActividad=><p className={style.pActivity}>{unaActividad.name} ({unaActividad.season})</p>) : <p className={style.pActivity}>None</p>}
+        {isArrayAndNotEmpty()?selectedCountry.activities.map(unaActividad=><p className={style.pActivity} value={unaActividad.Id} key={unaActividad.Id}>{unaActividad.name} ({unaActividad.season})</p>) : <p className={style.pActivity}>None</p>}
         
       </div>
-    );
+    );}
+else{
+  return(
+    <div className={style.loading}>
+      <img src={loadingImg} alt="loading Img"></img>
+    </div>
+  )
+}
 };
 
 export default CountryCard;
